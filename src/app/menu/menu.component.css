@@ -1,0 +1,9 @@
+.sidenav-container{
+  background-image: url("../.././assets/icon.jpg");
+  background-size: 100% ;
+  width: 100%;
+  height: 100%;
+}
+.active{
+  color: white;
+}

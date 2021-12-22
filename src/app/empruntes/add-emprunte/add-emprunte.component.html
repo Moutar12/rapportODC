@@ -1,0 +1,38 @@
+
+<mat-toolbar>
+  <span></span>
+  <span class="fill-remaining-space" ></span>
+  <button class="btn-dialog-close" (click)="onClose()"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form  class="normal-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input [formControlName]="'datePret'" matInput placeholder="Entrez la date de pret*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-select [formControlName]="'livre'" placeholder="Choissez un livre" >
+            <mat-option  *ngFor="let l of livre" value="{{l.id}}">{{l.titre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-select [formControlName]="'adherent'" placeholder="Affecter à un adherent" >
+            <mat-option  *ngFor="let a of adherent" value="{{a.id}}">{{a.prenom}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Submit</button>
+        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+
+      </div>
+    </mat-grid-tile>
+
+
+
+
+
+  </mat-grid-list>
+</form>

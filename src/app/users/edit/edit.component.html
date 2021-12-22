@@ -1,0 +1,51 @@
+
+<mat-toolbar>
+  <span></span>
+  <span class="fill-remaining-space" ></span>
+  <button class="btn-dialog-close" ><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form  class="normal-form" [formGroup]="form"  (ngSubmit)="onSubmit(user.id)" style="background-color: white; width: 100%">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input [formControlName]="'prenom'" matInput  [(ngModel)]="user.prenom">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [formControlName]="'email'" matInput  [(ngModel)]="user.email">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [formControlName]="'adresse'" matInput  [(ngModel)]="user.adresse">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input [formControlName]="'nom'" matInput [(ngModel)]="user.nom">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [formControlName]="'profil'" matInput  [(ngModel)]="user.password">
+        </mat-form-field>
+
+<!--        <mat-form-field >-->
+<!--          <mat-select [formControlName]="'profil'" placeholder="Choissez un profil"  [(ngModel)]="user.profil">-->
+<!--            <mat-option  ></mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+        <mat-form-field>
+          <input [formControlName]="'profil'" matInput placeholder="Entrez le password*" [(ngModel)]="user.profil">
+        </mat-form-field>
+
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Submit</button>
+  <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+</form>

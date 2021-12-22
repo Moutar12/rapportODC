@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container" xmlns:color="http://www.w3.org/1999/xhtml">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false" style="background-color: #2b2d42; color: white">
+    <mat-toolbar>Menu </mat-toolbar>
+    <mat-nav-list class="active">
+      <a mat-list-item [routerLinkActiveOptions]={exact:true} routerLinkActive="active" [routerLink]="['users']" >GESTION UTILISATEURS</a>
+      <a mat-list-item routerLinkActive="active" [routerLink]="['livre']">GETSION DES LIVRES</a>
+      <a mat-list-item routerLinkActive="active" [routerLink]="['emprunte']">GESTION DES EMPRUNTES</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="display: flex;justify-content: space-between;align-items: center ;color: #000000;">
+
+      <span><button  type="button"
+                     aria-label="Toggle sidenav"
+                     mat-icon-button
+                     (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button></span>
+      <mat-card-actions>
+        <button mat-flat-button style="background-color: #2b2d42;color: #ffffff;" (click)="logout()" > Deconnecter </button>
+      </mat-card-actions>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+<router-outlet></router-outlet>
+</mat-sidenav-container>
+
+

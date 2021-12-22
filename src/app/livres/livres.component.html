@@ -1,0 +1,72 @@
+<div class="search-div">
+  <mat-form-field class="search-form-field" floatLabel="never" fxLayout fxLayoutAlign="center center">
+    <input matInput  placeholder="Search" autocomplete="off" >
+    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div class="align-content-sm-center">
+<div class="design-container mat-elevation-z8 ">
+  <button mat-raised-button  (click)="onCreate()" style="margin-left: 50px">
+    <mat-icon>add</mat-icon>Create
+  </button>
+  <mat-table [dataSource]="dataSource"  matSort>
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+    </div>
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="titre">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>Titre</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.titre}}</mat-cell>
+    </ng-container>
+    </div>
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="auteur">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>Auteur</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.auteur}}</mat-cell>
+    </ng-container>
+    </div>
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="genre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Grenre</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.genre.libelle}}</mat-cell>
+    </ng-container>
+    </div>
+
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="annee">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>Année</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.annee}}</mat-cell>
+    </ng-container>
+    </div>
+
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="nbrLivre">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header>Nombre de Livre</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.nbrLivre}}</mat-cell>
+    </ng-container>
+    </div>
+
+    <div class="align-content-sm-center">
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button  [routerLink]="['edit', row.id]"><mat-icon>launch</mat-icon></button>
+        <button mat-icon-button color="warn" ><mat-icon>delete_outline</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+    </div>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="3"></mat-paginator>
+</div>
+</div>
+<router-outlet></router-outlet>
+
