@@ -10,40 +10,49 @@
       <div class="controles-container">
         <mat-form-field>
           <input [formControlName]="'prenom'" matInput placeholder="Entrez le prénom*">
-          <mat-error>This field is mandatory.</mat-error>
+          <mat-error>Le prenom est obligatoire.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input [formControlName]="'email'" matInput placeholder="Entrez l'email">
-          <mat-error>Invalid email address.</mat-error>
+          <input [formControlName]="'email'" matInput placeholder="Entrez l'email*">
+          <mat-error>L'email est obligatoire.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="password" [formControlName]="'password'" matInput placeholder="Entrez le password*">
+          <mat-error>Le password est obligatoire.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input [formControlName]="'adresse'" matInput placeholder="Entrez l'adresse*">
+          <mat-error>L'adresse est obligatoire.</mat-error>
         </mat-form-field>
+
+
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="controles-container">
         <mat-form-field>
           <input [formControlName]="'nom'" matInput placeholder="Entre le nom*">
-          <mat-error>This field is mandatory.</mat-error>
+          <mat-error>Le nom est obligatoire.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input [formControlName]="'password'" matInput placeholder="Entrez le password*">
+          <input type="password" [formControlName]="'confirmPassword'" matInput placeholder="Confirmer le password*">
+          <span *ngIf="formControls.confirmPassword.ConfirmedValidator">Le mot de passe et la confirmation ne correspondent pas.</span>
         </mat-form-field>
+
 
         <mat-form-field >
           <mat-select [formControlName]="'profil'" placeholder="Choissez un profil" >
             <mat-option  *ngFor="let p of profil" value="{{p.id}}">{{p.libelle}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <div class="button-row">
-          <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Submit</button>
-          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-        </div>
+
       </div>
+
     </mat-grid-tile>
   </mat-grid-list>
+  <button mat-raised-button color="primary"  type="submit" >Enregister</button>
 </form>

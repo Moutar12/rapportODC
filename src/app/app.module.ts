@@ -22,6 +22,7 @@ import {AddEmprunteComponent} from "./empruntes/add-emprunte/add-emprunte.compon
 import {EditEmprunteComponent} from "./empruntes/edit-emprunte/edit-emprunte.component";
 import {CustomPipe} from "./custom.pipe";
 import {SummerizePipe} from "./summerize.pipe";
+import {JumpLinePipe} from "./jump-line.pipe";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import {SummerizePipe} from "./summerize.pipe";
     AddEmprunteComponent,
     EditEmprunteComponent,
     CustomPipe,
-    SummerizePipe
+    SummerizePipe,
+    JumpLinePipe,
+
   ],
   imports: [
     BrowserModule,

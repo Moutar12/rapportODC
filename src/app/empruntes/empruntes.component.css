@@ -1,0 +1,23 @@
+
+table {
+  width: 90%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+  margin-left: 50px;
+  margin-top: 5px;
+
+}
+
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+  justify-content: center;
+  background-color: darkkhaki;
+}
+mat-paginator{
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin-left: 50px;
+}

@@ -44,7 +44,7 @@ export class EmpruntesComponent implements OnInit {
 
   // @ts-ignore
   listData: MatTableDataSource<any>;
-  public displayedColumns: string[] = ['id','adherent', 'livre','datePret','DateRetour','status', 'actions'];
+  public displayedColumns: string[] = ['id','adherent', 'livre','datePret','DateRetour','status', 'rendre'];
   public dataSource = new MatTableDataSource<Emprunte>();
 
 

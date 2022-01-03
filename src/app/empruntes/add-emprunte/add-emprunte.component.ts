@@ -37,6 +37,7 @@ export class AddEmprunteComponent implements OnInit {
   intForm(){
     this.form = new FormGroup({
       datePret: new FormControl('', Validators.required),
+      dateRetour: new FormControl('', Validators.required),
       livre: new FormControl(null, []),
       adherent: new FormControl(null, []),
     });

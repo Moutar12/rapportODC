@@ -4,37 +4,46 @@
   <span class="fill-remaining-space" ></span>
   <button class="btn-dialog-close" (click)="onClose()"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
+<mat-icon class="book" ><img src="assets/book.jpg" alt="image"/></mat-icon>
 <form  class="normal-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
   <mat-grid-list cols="2" rowHeight="300px">
     <mat-grid-tile>
       <div class="controles-container">
         <mat-form-field>
           <input [formControlName]="'titre'" matInput placeholder="Entrez le titre*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input [formControlName]="'auteur'" matInput placeholder="Entrez l'auteur">
-          <mat-error>Invalid email address.</mat-error>
+          <mat-error>Le titre est obligatoire.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input [formControlName]="'annee'" matInput placeholder="Entrez l'année*">
+          <mat-error>L'année est obligatoire.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="number" [formControlName]="'nbrLivre'" matInput placeholder="Entrez le nombre de livre">
+          <mat-error>Le nombre de livre est obligatoire</mat-error>
         </mat-form-field>
       </div>
     </mat-grid-tile>
+
     <mat-grid-tile>
       <div class="controles-container">
+        <mat-form-field>
+          <input [formControlName]="'auteur'" matInput placeholder="Entrez l'auteur">
+          <mat-error>L'auteur est obligatoire</mat-error>
+        </mat-form-field>
+
         <mat-form-field >
           <mat-select [formControlName]="'genre'" placeholder="Choissez un genre" >
             <mat-option  *ngFor="let g of genre" value="{{g.id}}">{{g.libelle}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <div class="button-row">
-          <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Submit</button>
-          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-        </div>
       </div>
+
     </mat-grid-tile>
   </mat-grid-list>
+
+  <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Enregistrer</button>
+
 </form>

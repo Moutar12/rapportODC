@@ -41,7 +41,7 @@ export class LivresComponent implements OnInit {
 
 
   // @ts-ignore
-  public displayedColumns: string[] = ['id','titre', 'auteur','genre','annee','nbrLivre', 'actions'];
+  public displayedColumns: string[] = ['id','titre', 'auteur','genre','annee','nbrLivre', 'update','delete'];
   public dataSource = new MatTableDataSource<Livre>();
   constructor(private route: Router, private MatDialog: MatDialog,
               private router: ActivatedRoute, private servicesLiv: LivreLivreService) { }
@@ -79,6 +79,10 @@ export class LivresComponent implements OnInit {
     dialogConf.autoFocus = true
     dialogConf.width = '40%';
     this.MatDialog.open(EditComponent,dialogConf)
+  }
+
+  onDelete(){
+
   }
 
 }

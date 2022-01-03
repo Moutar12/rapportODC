@@ -48,7 +48,7 @@ export class UsersComponent implements OnInit {
 
   // @ts-ignore
   listData: MatTableDataSource<any>;
-  public displayedColumns: string[] = ['id','prenom', 'nom','profil','address', 'email', 'actions'];
+  public displayedColumns: string[] = ['id','prenom', 'nom','profil','address', 'email','update', 'delete'];
   public dataSource = new MatTableDataSource<Users>();
 
 
@@ -111,17 +111,6 @@ getAll(){
 
 
   onEdit(id: number){
-    this.service.oneUser(id).subscribe(
-      (data) => {
-        this.id = data.id
-        this.prenom = data.prenom;
-        this.nom = data.nom;
-        this.adresse = data.adresse;
-        this.profil = data.profil;
-        this.email = data.email;
-        this.password = data.password
-        console.log(data)
-      })
     const dialogConf = new MatDialogConfig<Users>();
     dialogConf.disableClose = true;
     dialogConf.autoFocus = true

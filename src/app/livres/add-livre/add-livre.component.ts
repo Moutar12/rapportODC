@@ -35,6 +35,7 @@ export class AddLivreComponent implements OnInit {
       titre: new FormControl('', Validators.required),
       auteur: new FormControl('', Validators.required),
       annee: new FormControl('', Validators.required),
+      nbrLivre: new FormControl('', Validators.required),
       genre: new FormControl(null, []),
     });
   }

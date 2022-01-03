@@ -9,8 +9,8 @@
     <mat-grid-tile>
       <div class="controles-container">
         <mat-form-field>
-          <input [formControlName]="'datePret'" matInput placeholder="Entrez la date de pret*">
-          <mat-error>This field is mandatory.</mat-error>
+          <input type="date" [formControlName]="'datePret'" matInput placeholder="Entrez la date de pret*">
+          <mat-error>Date de pret obligatoire.</mat-error>
         </mat-form-field>
 
         <mat-form-field >
@@ -18,21 +18,23 @@
             <mat-option  *ngFor="let l of livre" value="{{l.id}}">{{l.titre}}</mat-option>
           </mat-select>
         </mat-form-field>
-
-        <mat-form-field >
-          <mat-select [formControlName]="'adherent'" placeholder="Affecter à un adherent" >
-            <mat-option  *ngFor="let a of adherent" value="{{a.id}}">{{a.prenom}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Submit</button>
-        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-
       </div>
     </mat-grid-tile>
 
-
-
-
-
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-form-field>
+              <input type="date" [formControlName]="'dateRetour'" matInput placeholder="Entrez la date de retour*">
+              <mat-error>Date de retour obligatoire.</mat-error>
+            </mat-form-field>
+            <mat-form-field >
+              <mat-select [formControlName]="'adherent'" placeholder="Affecter à un adherent" >
+                <mat-option  *ngFor="let a of adherent" value="{{a.id}}">{{a.prenom}} {{a.nom}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
   </mat-grid-list>
+
+        <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit" >Enregister emprunte</button>
 </form>

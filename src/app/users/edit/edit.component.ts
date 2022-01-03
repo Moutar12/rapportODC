@@ -29,18 +29,18 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.intForm();
-    this.id = this.route.snapshot.params.id
-    this.uservice.oneUser(this.id).subscribe(
-      (data) => {
-        this.id = data.id
-        this.prenom = data.prenom;
-        this.nom = data.nom;
-        this.adresse = data.adresse;
-        this.profil = data.profil;
-        this.email = data.email;
-        this.password = data.password
-        console.log(data)
-      })
+    // this.id = this.route.snapshot.params.id
+    // this.uservice.oneUser(this.id).subscribe(
+    //   (data) => {
+    //     this.id = data.id
+    //     this.prenom = data.prenom;
+    //     this.nom = data.nom;
+    //     this.adresse = data.adresse;
+    //     this.profil = data.profil;
+    //     this.email = data.email;
+    //     this.password = data.password
+    //     console.log(data)
+    //   })
   }
 
 
@@ -70,14 +70,17 @@ export class EditComponent implements OnInit {
   onSubmit(id: number){
     id = this.route.snapshot.params.id
     console.log(id)
-    // const user = {
-    //   'prenom': validEdit.value.prenom,
-    //   nom: validEdit.value.nom,
-    //   email: validEdit.value.email,
-    //   password: validEdit.value.prenom,
-    //   adresse: validEdit.value.adresse,
-    //   profil: validEdit.value.profil
-    // }
+    this.uservice.oneUser(id).subscribe(
+      (data) => {
+        this.id = data.id
+        this.prenom = data.prenom;
+        this.nom = data.nom;
+        this.adresse = data.adresse;
+        this.profil = data.profil;
+        this.email = data.email;
+        this.password = data.password
+        console.log(data)
+      })
 
 
       console.log(this.form.value)

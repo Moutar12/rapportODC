@@ -17,29 +17,45 @@ export class AddUsersComponent implements OnInit {
   // @ts-ignore
   id: number;
   user: any = [];
+  submitted = false;
+  success = '';
 
   constructor( private uservice: UsersService,private notif: NotifictionService,
               private dialoRef: MatDialogRef<AddUsersComponent>, private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.intForm();
-    this.getProfill()
-  }
-
-
-
-
-  intForm(){
     this.form = new FormGroup({
-      prenom: new FormControl('', Validators.required),
-      nom: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.email),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      adresse: new FormControl(''),
-      profil: new FormControl(null, []),
-    });
+        prenom: new FormControl('', Validators.required),
+        nom: new FormControl('', Validators.required),
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+        confirmPassword: new FormControl(''),
+        adresse: new FormControl('',Validators.required),
+        profil: new FormControl(null, []),
+      },
+      // @ts-ignore
+
+      this.ConfirmedValidator("password", 'confirmPassword')
+    );    this.getProfill()
   }
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({confirmedValidator: true});
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
+  }
+
+
+  get formControls (){return this.form.controls;}
 
   onClear(){
     this.form.reset();
@@ -47,6 +63,7 @@ export class AddUsersComponent implements OnInit {
   }
 
   onSubmit(){
+    this.submitted = true;
     console.log(this.form.value)
     if (this.form.valid){
         this.uservice.addUser(this.form.value).subscribe(
@@ -64,7 +81,6 @@ export class AddUsersComponent implements OnInit {
   onClose(){
     this.form.reset();
     this.dialoRef.close();
-
   }
   getProfill(){
     this.uservice.allProfil().subscribe(
